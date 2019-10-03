@@ -28,6 +28,12 @@ import java.io.StringReader;
 import java.io.OutputStreamWriter;
 import java.io.IOException;
 
+
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Arrays;
@@ -1144,6 +1150,14 @@ public class SuperC extends Tool {
 
       if (runtime.test("printAST")) {
         runtime.console().format((Node) translationUnit).pln().flush();
+        FileOutputStream f = new FileOutputStream(new File("OUTPUT_XTC_NODE.txt"));
+        ObjectOutputStream o = new ObjectOutputStream(f);
+
+        // Write objects to file
+        o.writeObject((Node) translationUnit);
+
+        o.close();
+        f.close();
       }
 
       if (runtime.test("printSource")) {

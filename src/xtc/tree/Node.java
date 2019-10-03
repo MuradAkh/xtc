@@ -18,6 +18,7 @@
  */
 package xtc.tree;
 
+import java.io.Serializable;
 import java.io.IOException;
 
 import java.util.Collection;
@@ -48,7 +49,7 @@ import xtc.util.Utilities;
  * @author Robert Grimm
  * @version $Revision: 1.55 $
  */
-public abstract class Node implements Iterable<Object>, Locatable {
+public abstract class Node implements Iterable<Object>, Locatable, Serializable {
 
   /** The properties. */
   Map<String, Object> properties;
